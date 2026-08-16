@@ -7,6 +7,7 @@ export const useDemoStore = create((set) => ({
     subject: null,
     level: null,
     teaserSolved: false,
+    teaserSkipped: false,
   },
   updateProfile: (patch) => set((state) => ({ profile: { ...state.profile, ...patch } })),
 

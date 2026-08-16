@@ -28,5 +28,6 @@ export const levels = [
   { id: 'advanced', label: 'Advanced', sub: (subject) => `Already ahead in ${subject}` },
 ]
 
-// 3x3 grid indices (0-8), the order cells must be clicked in to solve the teaser puzzle
-export const teaserSequence = [0, 2, 8, 6, 4]
+// 5 points arranged in a circle (index 0 = top, clockwise). Connecting every
+// second point in this order is how a five-pointed star is drawn in one line.
+export const starOrder = [0, 2, 4, 1, 3]

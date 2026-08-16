@@ -28,7 +28,7 @@ export default function OnboardingFlow() {
     !!profile.subject,
     !!profile.level,
     true,
-    !!profile.teaserSolved,
+    !!profile.teaserSolved || !!profile.teaserSkipped,
     true,
   ]
   const isLast = step === STEP_COUNT - 1
@@ -63,7 +63,16 @@ export default function OnboardingFlow() {
       case 4:
         return <MomentumScreen />
       case 5:
-        return <TeaserPuzzle solved={profile.teaserSolved} onSolve={() => updateProfile({ teaserSolved: true })} />
+        return (
+          <TeaserPuzzle
+            solved={profile.teaserSolved}
+            onSolve={() => updateProfile({ teaserSolved: true })}
+            onSkip={() => {
+              updateProfile({ teaserSkipped: true })
+              goNext()
+            }}
+          />
+        )
       case 6:
         return <PlanPreview subjectId={profile.subject} level={profile.level} grade={profile.grade} />
       default:
